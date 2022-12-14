@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="stylesheet" href="./static/lib/layui/css/layui.css">
+		<script src="./static/lib/jquery/jquery.js"></script>
+		<script src="./static/lib/layui/layui.js"></script>
+		<link rel="stylesheet" href="./static/css/setting.css">
+		<link rel="stylesheet" href="./static/css/scrollbar.css">
+		<link rel="stylesheet" href="./static/lib/fontawsome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./static/lib/hsycmsAlert/hsycmsAlert.min.css">
+		<link rel="stylesheet" href="./static/lib/TGTool/TGTool.css">
+		<script src="./static/lib/hsycmsAlert/hsycmsAlert.min.js"></script>
+		<script src="./static/lib/TGTool/TGTool.js"></script>
+	</head>
+	<body>
+		<div class="title">
+			<i class="fa" style="margin-right:10px">&#xf013;</i>设 置
+		</div>
+		<div class="main_box">
+			<form class="layui-form" lay-filter="settings" id="setting">
+				<div class="subtitle">下载设置</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">下载目录</label>
+					<div class="layui-input-inline">
+						<input type="text" name="download_path" required autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-form-mid" style="padding: 0!important;">
+						<button type="button" class="layui-btn layui-btn-primary" id="choose_download_dir">选择目录</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">Cookie</label>
+					<div class="layui-input-block">
+
+						<input type="text" name="cookie" autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-form-mid layui-word-aux cookie_info">请填写cookie中的SESSDATA(查看教程>>)
+						<div>
+							<blockquote class="layui-elem-quote layui-quote-nm">
+								浏览器登录B站 >开发人员工具 >应用程序>Cookie >SESSDATA
+							</blockquote>
+							<a href=" ">
+								<img src="https://s1.ax1x.com/2022/11/21/zQDwnK.png" alt="zQDwnK.png" border="0"
+									width="300px" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">多线程数</label>
+					<div class="layui-input-block">
+						<div id="thread_slide" class="demo-slider"></div>
+					</div>
+					<input style="display: none;" id="thread_num" name="thread_num">
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">默认下载清晰度</label>
+					<div class="layui-input-block">
+						<select name="quality" required>
+							<option value="127">超高清 8K</option>
+							<option value="126">杜比视界</option>
+							<option value="125">真彩 HDR</option>
+							<option value="120">超清 4K</option>
+							<option value="116">高清 1080P60</option>
+							<option value="112">高清 1080P+</option>
+							<option value="80">高清 1080P</option>
+							<option value="64">高清 720P</option>
+							<option value="32">清晰 480P</option>
+							<option value="16">流畅 360P</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">视频编码格式</label>
+					<div class="layui-input-block">
+						<select name="codec" required>
+							<option value="AVC">AVC/H.264</option>
+							<option value="HEVC">HEVC/H.265</option>
+							<option value="AV1">AV1</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">下载完成后弹出通知</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="show_notification" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+
+
+				<hr>
+				<div class="subtitle">弹幕、字幕、歌词设置</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">下载弹幕</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="save_danmaku" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">下载字幕</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="save_subtitle" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">下载歌词</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="save_lyric" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+
+
+				<hr>
+				<div class="subtitle">代理设置</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">使用代理</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="proxy_enable" lay-skin="switch" lay-text="ON|OFF"
+							lay-filter="use_proxy">
+					</div>
+				</div>
+				<div id="proxy_set" class="layui-hide">
+					<div class="layui-form-item">
+						<label class="layui-form-label">地址</label>
+						<div class="layui-input-inline">
+							<input type="text" name="proxy_address" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">端口</label>
+						<div class="layui-input-inline">
+							<input type="text" name="proxy_port" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">使用代理身份验证</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="auth_enable" lay-skin="switch" lay-text="ON|OFF"
+							lay-filter="use_proxy_user">
+					</div>
+				</div>
+				<div id="proxy_user_set" class="layui-hide">
+					<div class="layui-form-item">
+						<label class="layui-form-label">用户名</label>
+						<div class="layui-input-inline">
+							<input type="text" name="auth_uname" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">密码</label>
+						<div class="layui-input-inline">
+							<input type="text" name="auth_pwd" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<hr>
+				<div class="subtitle">其他设置</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">显示非正片剧集</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="show_sections" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+					<div class="layui-form-mid layui-word-aux">非正片剧集如：花絮、OP、PV、ED等</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">自动检查更新</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="check_update" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">调试模式</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="debug" lay-skin="switch" lay-text="ON|OFF">
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn layui-btn-primary" type="submit">立即提交</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<script src="./static/js/setting.js">
+		</script>
+	</body>
+</html>

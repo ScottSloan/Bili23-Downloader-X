@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<script src="./static/lib/jquery/jquery.js"></script>
+		<script src="./static/lib/darkmode/darkmode.js"></script>
+		<link rel="stylesheet" href="./static/css/index.css">
+		<link rel="stylesheet" href="./static/css/scrollbar.css">
+		<link rel="stylesheet" href="./static/lib/fontawsome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./static/lib/hsycmsAlert/hsycmsAlert.min.css">
+		<link rel="stylesheet" href="./static/lib/TGTool/TGTool.css">
+		<script src="./static/lib/hsycmsAlert/hsycmsAlert.min.js"></script>
+		<script src="./static/lib/TGTool/TGTool.js"></script>
+	</head>
+
+	<body>
+		<div id="menu">
+			<i class="fa" id="menu_button_icon">&#xf0c9;</i>
+		</div>
+		<img src="./static/img/user.png" width="50px" height="50px" id="user_image">
+
+		<div id="menu_list" class="menu_list_closed" anim_data="closed">
+			<div class="menu_top">
+				<img style="width:300px" src="./static/img/bilibili.png">
+				<button type="button" id="open_home"><i class="fa">&#xf015;</i>首 页</button><br>
+				<button type="button" id="open_tool" disabled><i class="fa">&#xf0b1;</i>工具箱</button><br>
+				<button type="button" id="open_log" disabled><i class="fa">&#xf02d;</i>日 志</button><br>
+				<button type="button" id="open_about"><i class="fa">&#xf05a;</i>关 于</button><br>
+				<button type="button" id="open_download"><i class="fa">&#xf019;</i>下载管理</button><br>
+				<button type="button" style='border-bottom:1px solid #dadada;' id="open_console" disabled><i
+						class="fa">&#xf121;</i>控制台</button>
+			</div>
+			<div class="menu_bottom">
+				<button type="button" id="open_setting"><i class="fa">&#xf013;</i>设 置</button><br>
+				<button type="button" style="color:#ff1317" id="close_window_btn"><i class="fa">&#xf05c;</i>退 出</button>
+			</div>
+		</div>
+		<div class="main_box">
+			<div id="loading_box" style="height:100%;width:100%;z-index:98;position:fixed">
+				<table style="height:100%;width:100%;text-align: center;">
+					<tr>
+						<td>LOADING……</td>
+					</tr>
+				</table>
+			</div>
+			<iframe src="" height="100%" width="100%" frameborder="0" id="main_iframe"
+				style="display:none;z-index:99;position:fixed"></iframe>
+		</div>
+		<!--遮罩层-->
+		<div id="main_shade" style="position: fixed;top:0px;left:0px;z-index:200;width:100%;height:100%;display: none;">
+		</div>
+
+		<!--弹窗-退出软件-->
+		<div class="notice_card" style="bottom: 60px;left: -400px;height:140px" id="if_close_window">
+			<i class="fa" style="color:#ffae22;">&#xf06a;</i>
+			<div class="notice_card_text">
+				<p>此操作会关闭整个窗口，确认要退出吗？</p>
+				<div class="notice_card_btn">
+					<button style="width:100px;background-color: #ff1317;color:#ffffff"
+						id="if_close_window_true">确认</button>
+					<button style="width:100px" id="if_close_window_false">取消</button>
+				</div>
+			</div>
+		</div>
+		<script src="./static/js/index.js">
+		</script>
+	</body>
+
+</html>
