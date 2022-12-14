@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<link rel="stylesheet" href="./static/lib/layui/css/layui.css">
+		<script src="./static/lib/jquery/jquery.js"></script>
+		<script src="./static/lib/layui/layui.js"></script>
+		<link rel="stylesheet" href="./static/css/download.css">
+		<link rel="stylesheet" href="./static/css/scrollbar.css">
+		<link rel="stylesheet" href="./static/lib/fontawsome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./static/lib/hsycmsAlert/hsycmsAlert.min.css">
+		<link rel="stylesheet" href="./static/lib/TGTool/TGTool.css">
+		<script src="./static/lib/hsycmsAlert/hsycmsAlert.min.js"></script>
+		<script src="./static/lib/TGTool/TGTool.js"></script>
+	</head>
+	<body>
+		<div class="title">
+			<i class="fa" style="margin-right:10px">&#xf019;</i>下载管理
+		</div>
+		<div class="main_box">
+			<div class="subtitle"><span id="task_num">0</span>个任务正在下载<a href="./download_complete.html"
+					class="change_mode">查看下载完成的任务>></a>
+				<button class="layui-btn layui-btn-primary" id="clear_list">清除错误任务</button>
+			</div>
+			<div class="layui-upload-list" style="width:100%">
+				<table class="layui-table">
+					<colgroup>
+						<col width="45%">
+						<col width="10%">
+						<col width="10%">
+						<col width="20%">
+						<col width="15%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>视频名称</th>
+							<th>大小</th>
+							<th>速度</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="download_list"></tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+		<script src="./static/js/download.js">
+		</script>
+	</body>
+</html>
